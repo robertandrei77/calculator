@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+<body>
+
+    <h2>Calculator</h2>
+    <input type="number" id="num1" placeholder="Primul număr">
+    <input type="text" id="operation" placeholder="Operația (+, -, *, /)">
+    <input type="number" id="num2" placeholder="Al doilea număr">
+    <button onclick="calculeaza()">Calculează</button>
+
+    <div id="result" style="display:none; margin-top: 20px;"></div>
+
+    <script>
+        function calculeaza() {
+            var num1 = parseFloat(document.getElementById('num1').value);
+            var operation = document.getElementById('operation').value;
+            var num2 = parseFloat(document.getElementById('num2').value);
+            var rezultat;
+
+            if (operation === '+') {
+                rezultat = num1 + num2;
+            } else if (operation === '-') {
+                rezultat = num1 - num2;
+            } else if (operation === '*') {
+                rezultat = num1 * num2;
+            } else if (operation === '/') {
+                if (num2 !== 0) {
+                    rezultat = num1 / num2;
+                } else {
+                    rezultat = "Eroare: Împărțirea la zero nu este permisă.";
+                }
+            } else {
+                rezultat = "Operație invalidă!";
+            }
+
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('result').innerText = 'Rezultatul este: ' + rezultat;
+        }
+    </script>
+
+</body>
+</html>
